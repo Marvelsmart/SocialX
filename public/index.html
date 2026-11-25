@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#10172b">
+    <meta name="description" content="SocialX helps creators launch and track social engagement campaigns.">
+    <title>SocialX — social growth, made simple</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/styles.css?v=4">
+    <script src="/app.js?v=6" defer></script>
+  </head>
+  <body>
+    <div class="auth-screen" id="auth-screen">
+      <div class="auth-brand">
+        <a class="brand brand-light" href="/" aria-label="SocialX home"><span class="brand-mark">s</span>social<span class="brand-x">x</span></a>
+        <div class="auth-art">
+          <div class="art-orb orb-one"></div>
+          <div class="art-orb orb-two"></div>
+          <div class="art-card art-card-one"><span class="art-avatar avatar-lime">↗</span><div><b>Your next post, in motion</b><small>Real-time delivery tracking.</small></div><span class="art-spark">✳</span></div>
+          <div class="art-card art-card-two"><span class="art-avatar avatar-pink">♥</span><div><b>Build your audience</b><small>Likes, views and followers.</small></div><span class="art-heart">●</span></div>
+          <div class="auth-brand-copy"><span class="eyebrow" id="auth-art-eyebrow">SOCIAL GROWTH, MADE SIMPLE</span><h2 id="auth-art-title">Give good content<br>the reach it deserves.</h2><p id="auth-art-copy">Launch engagement campaigns across your favorite platforms, then track delivery and spend from one clear dashboard.</p></div>
+        </div>
+        <p class="auth-legal" id="auth-art-footer">One dashboard for every social boost.</p>
+      </div>
+      <main class="auth-main">
+        <section class="auth-form-wrap">
+          <p class="eyebrow accent-eyebrow" id="auth-eyebrow">YOUR SOCIAL GROWTH WORKSPACE</p>
+          <h1 id="auth-title">Welcome back.</h1>
+          <p class="auth-subtitle" id="auth-subtitle">Sign in to manage your campaigns and wallet.</p>
+          <div class="auth-tabs" id="auth-tabs" role="tablist" aria-label="Account options">
+            <button type="button" class="auth-tab active" id="login-tab" role="tab" aria-selected="true">Sign in</button>
+            <button type="button" class="auth-tab" id="signup-tab" role="tab" aria-selected="false">Create account</button>
+          </div>
+          <form id="auth-form">
+            <label class="field" id="name-field" hidden>
+              <span>Your name</span>
+              <input name="name" autocomplete="name" minlength="2" maxlength="60" placeholder="How should we call you?">
+            </label>
+            <label class="field" id="username-field" hidden>
+              <span>Username</span>
+              <div class="input-prefix"><span>@</span><input name="username" autocomplete="username" minlength="3" maxlength="24" pattern="[A-Za-z0-9_]+" placeholder="yourname"></div>
+            </label>
+            <label class="field">
+              <span>Email address</span>
+              <input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@example.com">
+            </label>
+            <label class="field">
+              <span>Password</span>
+              <input name="password" type="password" autocomplete="current-password" minlength="10" maxlength="72" required placeholder="At least 10 characters">
+            </label>
+            <p class="form-message" id="auth-message" role="alert"></p>
+            <button class="button button-primary auth-submit" id="auth-submit" type="submit">Sign in <span>→</span></button>
+          </form>
+          <p class="auth-note">By continuing, you agree to be kind and keep this community welcoming.</p>
+          <p class="auth-route-switch"><span id="auth-route-prompt">Manage the platform?</span> <a id="auth-route-link" href="/admin/login">Administrator sign in</a></p>
+        </section>
+      </main>
+    </div>
+
+    <div class="app-shell" id="app-shell" hidden>
+      <aside class="sidebar">
+        <a class="brand" href="#" data-nav="dashboard" aria-label="SocialX overview"><span class="brand-mark">s</span>social<span class="brand-x">x</span></a>
+        <p class="side-label">COMMUNITY</p>
+        <nav class="main-nav" aria-label="Community navigation">
+          <button type="button" class="nav-item" data-nav="feed"><span class="nav-icon">⌂</span>Community feed</button>
+        </nav>
+        <p class="side-label">YOUR ACCOUNT</p>
+        <nav class="main-nav" aria-label="Account navigation">
+          <button type="button" class="nav-item active" data-nav="dashboard"><span class="nav-icon">▦</span>Dashboard</button>
+          <button type="button" class="nav-item" data-nav="wallet"><span class="nav-icon">◉</span>Moneybox</button>
+          <button type="button" class="nav-item" data-nav="orders"><span class="nav-icon">▤</span>My orders</button>
+          <button type="button" class="nav-item" data-nav="marketplace"><span class="nav-icon">◈</span>Boost services</button>
+          <button type="button" class="nav-item" data-nav="support"><span class="nav-icon">◎</span>Help &amp; tickets</button>
+        </nav>
+        <div id="admin-nav-group" hidden>
+          <p class="side-label">ADMINISTRATION</p>
+          <nav class="main-nav" aria-label="Administration navigation">
+            <button type="button" class="nav-item admin-nav-item" data-nav="admin" id="admin-nav"><span class="nav-icon">▦</span>Overview</button>
+            <button type="button" class="nav-item admin-nav-item" data-nav="admin-orders"><span class="nav-icon">▤</span>Engagement orders</button>
+            <button type="button" class="nav-item admin-nav-item" data-nav="admin-support"><span class="nav-icon">◎</span>Support inbox</button>
+            <button type="button" class="nav-item admin-nav-item" data-nav="admin-users"><span class="nav-icon">♙</span>Customers</button>
+          </nav>
+        </div>
+        <div class="sidebar-user">
+          <div class="avatar avatar-user" id="sidebar-avatar">S</div>
+          <div class="sidebar-user-info"><b id="sidebar-name">Your profile</b><span id="sidebar-username">@you</span></div>
+          <button type="button" class="icon-button logout-button" id="logout-button" aria-label="Sign out" title="Sign out">↗</button>
+        </div>
+      </aside>
+
+      <main class="main-content">
+        <header class="topbar">
+          <div><p class="eyebrow accent-eyebrow" id="page-context">ACCOUNT</p><h1 id="page-title">Overview</h1></div>
+          <div class="topbar-greeting"><span class="greeting-dot"></span><span id="topbar-name">Welcome back</span></div>
+        </header>
+
+        <div class="workspace-grid">
+          <section class="primary-column feed-view" id="feed-view" hidden>
+            <article class="composer panel">
+              <div class="avatar composer-avatar" id="composer-avatar">S</div>
+              <form id="post-form">
+                <label class="visually-hidden" for="post-body">Write a post</label>
+                <textarea id="post-body" name="body" maxlength="1000" placeholder="Share an update with your community." required></textarea>
+                <div class="composer-footer"><span class="composer-hint">Your post is visible to the community.</span><button class="button button-primary post-submit" type="submit">Publish post <span>↗</span></button></div>
+              </form>
+            </article>
+            <div class="feed-heading"><div><p class="eyebrow">COMMUNITY</p><h2>Latest posts <span class="live-dot"></span></h2></div></div>
+            <div class="feed-list" id="feed-list" aria-live="polite"></div>
+          </section>
+
+          <section class="primary-column dashboard-view" id="dashboard-view">
+            <div class="page-intro"><div><p class="eyebrow">YOUR GROWTH, AT A GLANCE</p><h2>Welcome back, <span id="dashboard-name">there</span></h2><p>Launch social campaigns, follow delivery and keep your balance ready.</p></div><button type="button" class="button button-primary" data-nav="marketplace">Create a boost <span>↗</span></button></div>
+            <article class="dashboard-balance-card">
+              <div><p class="balance-kicker">MONEYBOX BALANCE</p><b id="dashboard-balance">Loading…</b><span>Available for your next engagement campaign</span></div>
+              <button type="button" class="button button-light" data-nav="wallet">Add funds <span>→</span></button>
+            </article>
+            <div class="stats-grid">
+              <article class="stat-card"><span class="stat-icon stat-violet">▤</span><span class="stat-label">Total campaigns</span><b id="stat-orders">—</b></article>
+              <article class="stat-card"><span class="stat-icon stat-coral">◷</span><span class="stat-label">In progress</span><b id="stat-active-orders">—</b></article>
+              <article class="stat-card"><span class="stat-icon stat-green">✓</span><span class="stat-label">Completed</span><b id="stat-completed-orders">—</b></article>
+              <article class="stat-card"><span class="stat-icon stat-yellow">↗</span><span class="stat-label">Total invested</span><b id="stat-spend">—</b></article>
+            </div>
+            <div class="dashboard-lower-grid">
+              <article class="panel recent-panel"><div class="panel-heading"><div><p class="eyebrow">CAMPAIGN ACTIVITY</p><h2>Recent orders</h2></div><button type="button" class="text-button" data-nav="orders">All orders <span>→</span></button></div><div id="dashboard-recent-orders" class="recent-posts"></div></article>
+              <article class="campaign-prompt">
+                <span class="campaign-prompt-mark">↗</span>
+                <p class="eyebrow">READY TO GROW?</p>
+                <h2>Your next audience is one boost away.</h2>
+                <p>Choose a platform, set your target and track every delivery from your orders.</p>
+                <button type="button" class="button button-light" data-nav="marketplace">Explore engagement <span>→</span></button>
+                <p class="form-message" id="payment-message" role="status"></p>
+              </article>
+            </div>
+          </section>
+
+          <section class="primary-column wallet-view" id="wallet-view" hidden>
+            <div class="page-intro"><div><p class="eyebrow">ACCOUNT FINANCES</p><h2>Moneybox</h2><p>Top up securely and review the funds powering your campaigns.</p></div></div>
+            <article class="panel wallet-panel">
+              <div class="wallet-overview"><div><p class="eyebrow">AVAILABLE BALANCE</p><b id="wallet-balance">Loading…</b></div><span class="wallet-currency-badge" id="wallet-currency">NGN</span></div>
+              <form id="wallet-topup-form" class="wallet-topup-form">
+                <label class="field"><span>Top-up amount (<span class="currency-copy">NGN</span>)</span><input id="wallet-topup-amount" type="number" min="1" step="0.01" required placeholder="Enter amount"></label>
+                <button class="button button-primary" type="submit" id="wallet-topup-button">Continue to secure payment <span>→</span></button>
+              </form>
+              <p class="muted-copy">Payments are processed securely by Squad. Wallet funds are credited after payment confirmation.</p>
+              <p class="form-message" id="wallet-message" role="status"></p>
+            </article>
+            <article class="panel wallet-history-panel">
+              <div class="panel-heading"><div><p class="eyebrow">LEDGER</p><h2>Recent transactions</h2></div></div>
+              <div class="wallet-transactions" id="wallet-transactions"></div>
+            </article>
+          </section>
+
+          <section class="primary-column orders-view" id="orders-view" hidden>
+            <div class="page-intro"><div><p class="eyebrow">ORDER MANAGEMENT</p><h2>My orders</h2><p>Track delivery, request eligible refills and review order charges.</p></div><button type="button" class="button button-primary" data-nav="marketplace">Browse services <span>→</span></button></div>
+            <article class="panel order-history-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR ACTIVITY</p><h2>Order history</h2></div><button type="button" class="text-button" id="reload-orders">Refresh orders</button></div>
+              <div id="engagement-orders" class="engagement-orders"><p class="muted-copy">Your orders will appear here.</p></div>
+            </article>
+          </section>
+
+          <section class="primary-column marketplace-view" id="marketplace-view" hidden>
+            <div class="page-intro"><div><p class="eyebrow">SERVICE CATALOG</p><h2>Browse services</h2><p>Choose an engagement service and submit a public link to get started.</p></div></div>
+            <article class="panel marketplace-panel">
+              <div class="panel-heading"><div><p class="eyebrow">NEW ORDER</p><h2>Order details</h2></div><button type="button" class="text-button" id="reload-services">Refresh catalog</button></div>
+              <p class="muted-copy">Services are supplied by SMM Resellers Hub. We will never ask for your social account password.</p>
+              <form id="engagement-order-form">
+                <label class="field"><span>Platform and service</span><select id="engagement-service" required><option value="">Loading services…</option></select></label>
+                <label class="field"><span>Public post or profile URL</span><input id="engagement-link" type="url" required maxlength="2048" placeholder="https://…"></label>
+                <label class="field"><span>Quantity</span><input id="engagement-quantity" type="number" min="1" step="1" required></label>
+                <div class="dripfeed-fields" id="dripfeed-fields" hidden>
+                  <label class="field"><span>Drip-feed runs (optional)</span><input id="engagement-runs" type="number" min="1" step="1"></label>
+                  <label class="field"><span>Interval (minutes, optional)</span><input id="engagement-interval" type="number" min="1" step="1"></label>
+                </div>
+                <p class="muted-copy">Estimated price: <b id="engagement-estimate">—</b>. The final price is confirmed before your wallet is charged.</p>
+                <p class="form-message" id="engagement-message" role="status"></p>
+                <button class="button button-primary" type="submit" id="engagement-submit">Place order <span>→</span></button>
+              </form>
+            </article>
+          </section>
+
+          <section class="primary-column support-view" id="support-view" hidden>
+            <div class="page-intro"><div><p class="eyebrow">CUSTOMER CARE</p><h2>Support tickets</h2><p>Contact our support team and follow every reply in one place.</p></div></div>
+            <article class="panel support-create-panel">
+              <div class="panel-heading"><div><p class="eyebrow">NEED HELP?</p><h2>Open a support request</h2></div></div>
+              <form id="support-ticket-form" class="support-ticket-form">
+                <label class="field"><span>Topic</span><select id="support-category" required><option value="orders">Orders and delivery</option><option value="payments">Payments and wallet</option><option value="account">My account</option><option value="technical">Technical issue</option><option value="other">Something else</option></select></label>
+                <label class="field"><span>Subject</span><input id="support-subject" type="text" minlength="3" maxlength="120" required placeholder="A short summary of the issue"></label>
+                <label class="field"><span>How can we help?</span><textarea id="support-message" rows="4" minlength="5" maxlength="4000" required placeholder="Include relevant details. Please do not share passwords or payment credentials."></textarea></label>
+                <p class="form-message" id="support-form-message" role="status"></p>
+                <button class="button button-primary" id="support-submit" type="submit">Submit ticket <span>→</span></button>
+              </form>
+            </article>
+            <article class="panel support-history-panel">
+              <div class="panel-heading"><div><p class="eyebrow">YOUR REQUESTS</p><h2>Ticket history</h2></div><button type="button" class="text-button" id="reload-support-tickets">Refresh</button></div>
+              <div id="support-tickets" class="support-ticket-list"><p class="muted-copy">Your support requests will appear here.</p></div>
+            </article>
+          </section>
+
+          <section class="primary-column admin-view" id="admin-view" hidden>
+            <div class="page-intro admin-page-intro"><div><p class="eyebrow">SOCIALX OPERATIONS</p><h2 id="admin-heading">Business overview</h2><p id="admin-subheading">Monitor customers, paid engagement and support from one place.</p></div><span class="admin-secure-label">ADMINISTRATOR</span></div>
+            <section class="admin-section" id="admin-overview-section">
+              <div class="admin-metrics">
+                <article class="admin-metric-card"><span>Customers</span><b id="admin-stat-users">—</b><small>Total registered accounts</small></article>
+                <article class="admin-metric-card"><span>Engagement orders</span><b id="admin-stat-orders">—</b><small id="admin-stat-active-label">All-time campaigns</small></article>
+                <article class="admin-metric-card"><span>In progress</span><b id="admin-stat-active">—</b><small>Currently being delivered</small></article>
+                <article class="admin-metric-card"><span>Unresolved tickets</span><b id="admin-stat-tickets">—</b><small>Open or in progress</small></article>
+              </div>
+              <div class="admin-overview-grid">
+                <article class="panel admin-panel">
+                  <div class="panel-heading"><div><p class="eyebrow">PAID ENGAGEMENT</p><h2>Order status</h2></div><button type="button" class="text-button" data-nav="admin-orders">Manage orders →</button></div>
+                  <div class="admin-status-breakdown" id="admin-status-breakdown"></div>
+                </article>
+                <article class="panel admin-panel">
+                  <div class="panel-heading"><div><p class="eyebrow">WHAT CUSTOMERS BUY</p><h2>Top services</h2></div></div>
+                  <div class="admin-service-breakdown" id="admin-service-breakdown"></div>
+                </article>
+              </div>
+              <article class="panel admin-panel provider-balance-panel">
+                <div><p class="eyebrow">SUPPLIER ACCOUNT</p><h2>Provider balance</h2></div>
+                <b id="provider-balance">Not loaded</b>
+                <button type="button" class="text-button" id="reload-provider-balance">Refresh balance</button>
+              </article>
+              <article class="panel admin-panel">
+                <div class="panel-heading"><div><p class="eyebrow">LATEST ACTIVITY</p><h2>Recent engagement orders</h2></div><button type="button" class="text-button" data-nav="admin-orders">View all orders →</button></div>
+                <div class="admin-table-wrap"><table><thead><tr><th>Customer</th><th>Paid service / target</th><th>Qty</th><th>Status</th><th>Charge</th></tr></thead><tbody id="admin-recent-orders"></tbody></table></div>
+              </article>
+              <article class="panel admin-panel admin-overview-tickets">
+                <div class="panel-heading"><div><p class="eyebrow">CUSTOMER CARE</p><h2>Support needs attention</h2></div><button type="button" class="text-button" data-nav="admin-support">Open support inbox →</button></div>
+                <div id="admin-overview-tickets" class="admin-ticket-list"><p class="muted-copy">Loading support tickets…</p></div>
+              </article>
+            </section>
+            <section class="admin-section" id="admin-orders-section" hidden>
+              <article class="panel admin-panel">
+                <div class="panel-heading"><div><p class="eyebrow">FULFILLMENT</p><h2>Customer engagement orders</h2></div><div class="admin-controls"><button type="button" class="text-button" id="admin-orders-previous">Previous</button><span id="admin-orders-page">Page 1</span><button type="button" class="text-button" id="admin-orders-next">Next</button><button type="button" class="text-button" id="reload-admin-orders">Refresh</button></div></div>
+                <div class="admin-table-wrap"><table><thead><tr><th>Customer</th><th>Service / target</th><th>Quantity</th><th>Status</th><th>Charge / refund</th><th>Created</th></tr></thead><tbody id="admin-orders"></tbody></table></div>
+              </article>
+            </section>
+            <section class="admin-section" id="admin-support-section" hidden>
+              <article class="panel admin-panel">
+                <div class="panel-heading"><div><p class="eyebrow">CUSTOMER CARE</p><h2>Support inbox &amp; complaints</h2></div><div class="admin-controls"><select id="admin-ticket-filter" aria-label="Filter support tickets"><option value="open">Open</option><option value="in_progress">In progress</option><option value="resolved">Resolved</option><option value="all">All tickets</option></select><button type="button" class="text-button" id="reload-admin-tickets">Refresh</button></div></div>
+                <div id="admin-tickets" class="admin-ticket-list"><p class="muted-copy">Support tickets will appear here.</p></div>
+                <div class="admin-controls admin-pagination"><button type="button" class="text-button" id="admin-tickets-previous">Previous</button><span id="admin-tickets-page">Page 1</span><button type="button" class="text-button" id="admin-tickets-next">Next</button></div>
+              </article>
+            </section>
+            <section class="admin-section" id="admin-users-section" hidden>
+              <article class="panel admin-panel">
+                <div class="panel-heading"><div><p class="eyebrow">ACCOUNT DIRECTORY</p><h2>Customers</h2></div><div class="admin-controls"><button type="button" class="text-button" id="admin-users-previous">Previous</button><span id="admin-users-page">Page 1</span><button type="button" class="text-button" id="admin-users-next">Next</button><button type="button" class="text-button" id="reload-admin-users">Refresh</button></div></div>
+                <div class="admin-table-wrap"><table><thead><tr><th>Customer</th><th>Email</th><th>Wallet</th><th>Joined</th></tr></thead><tbody id="admin-users"></tbody></table></div>
+              </article>
+            </section>
+          </section>
+
+          <aside class="right-column" id="community-sidebar" hidden>
+            <article class="people-card panel">
+              <div class="panel-heading"><div><p class="eyebrow">COMMUNITY</p><h2>People to follow</h2></div><span class="people-spark">✳</span></div>
+              <div id="discover-list" class="discover-list"><p class="muted-copy">Finding people…</p></div>
+            </article>
+          </aside>
+        </div>
+        <footer class="footer"><span>social<span class="brand-x">x</span></span><span>Social and engagement services in one account.</span></footer>
+      </main>
+      <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    </div>
+  </body>
+</html>
