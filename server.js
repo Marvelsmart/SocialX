@@ -74,13 +74,17 @@ app.use((err, req, res, next) => {
 });
 
 async function start() {
-  if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
-    throw new Error("JWT_SECRET must be set to a random value of at least 32 characters.");
-  }
+  validateEnvironment();
   await connectDatabase();
   app.listen(port, () => {
     console.log(`SocialX is running at http://localhost:${port}`);
   });
+}
+
+function validateEnvironment() {
+  if (!process.env.JWT_SECRET || process.env.JWT_SECRET.length < 32) {
+    throw new Error("JWT_SECRET must be set to a random value of at least 32 characters.");
+  }
 }
 
 if (require.main === module) {
@@ -90,4 +94,4 @@ if (require.main === module) {
   });
 }
 
-module.exports = { app };
+module.exports = { app, validateEnvironment };

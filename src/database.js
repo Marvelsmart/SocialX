@@ -1,7 +1,21 @@
 const mongoose = require("mongoose");
 const dns = require("node:dns");
 
+let connectionPromise;
+
 async function connectDatabase() {
+  if (mongoose.connection.readyState === 1) return;
+  if (connectionPromise) return connectionPromise;
+
+  connectionPromise = connect();
+  try {
+    await connectionPromise;
+  } finally {
+    connectionPromise = undefined;
+  }
+}
+
+async function connect() {
   const uri = process.env.MONGODB_URI;
   if (!uri) {
     throw new Error("MONGODB_URI is required.");

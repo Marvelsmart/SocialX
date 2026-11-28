@@ -16,6 +16,10 @@ Requirements: Node.js 20+ and MongoDB. Wallet credits and order debits use Mongo
 There is no separate frontend server command: Express serves the frontend files from `public/` and the API from `/api` on the same origin. Both start commands launch the full app and require MongoDB plus the `.env` settings above. For local MongoDB, the example URI uses the standard `socialx` database.
 If the connection URI omits a database name, the app uses `socialx`; override this with `MONGODB_DB_NAME` if needed. If your system DNS resolver refuses MongoDB Atlas SRV lookups, set `MONGODB_DNS_SERVERS` to comma-separated resolvers permitted by your network (for example `1.1.1.1,8.8.8.8`). This affects DNS resolution in the app process only, not Windows network settings.
 
+## Deploy to Vercel
+
+Select the Express preset and use the repository root. Leave the Build Command and Output Directory unset; Vercel uses the root `index.js` entry point. Set `MONGODB_URI` and a unique `JWT_SECRET` of at least 32 characters in the Vercel project environment variables. Set any optional payment or provider variables only when enabling those features. Allow the Vercel deployment to connect to MongoDB Atlas, and create administrator accounts against the production database with `npm run create-admin`.
+
 ## Sign-in pages
 
 - Customer sign-in: `https://<your-domain>/login` (account creation: `/signup`)
