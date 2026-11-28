@@ -131,6 +131,9 @@ async function enterApp(user) {
   );
   authScreen.hidden = true;
   appShell.hidden = false;
+  appShell.classList.toggle("admin-shell", user.isAdmin);
+  document.querySelector("#app-shell .sidebar .brand").dataset.nav =
+    user.isAdmin ? "admin" : "dashboard";
   document.querySelector("#sidebar-name").textContent = user.name;
   document.querySelector("#sidebar-username").textContent = `@${user.username}`;
   document.querySelector("#sidebar-avatar").textContent = initials(user.name);
@@ -138,13 +141,17 @@ async function enterApp(user) {
   document.querySelector("#topbar-name").textContent = `Welcome back, ${user.name.split(" ")[0]}`;
   document.querySelector("#dashboard-name").textContent = user.name.split(" ")[0];
   document.querySelector("#admin-nav-group").hidden = !user.isAdmin;
-  await Promise.all([
-    loadFeed(),
-    loadDiscover(),
-    loadDashboard(),
-    loadBilling(),
-    loadWallet(),
-  ]);
+  if (user.isAdmin) {
+    document.querySelector("#admin-nav").click();
+  } else {
+    await Promise.all([
+      loadFeed(),
+      loadDiscover(),
+      loadDashboard(),
+      loadBilling(),
+      loadWallet(),
+    ]);
+  }
   if (new URLSearchParams(location.search).get("payment") === "return") {
     await verifyPayment();
   }
@@ -154,6 +161,7 @@ function showAuth(adminLogin = location.pathname.startsWith("/admin")) {
   appShell.hidden = true;
   authScreen.hidden = false;
   currentUser = null;
+  appShell.classList.remove("admin-shell");
   const signup = !adminLogin && location.pathname === "/signup";
   const path = adminLogin ? "/admin/login" : signup ? "/signup" : "/login";
   history.replaceState(null, "", path);
@@ -1213,6 +1221,7 @@ document.querySelectorAll("[data-nav]").forEach((button) => {
     event.preventDefault();
     const destination = button.dataset.nav;
     const adminDestination = destination.startsWith("admin");
+    if (currentUser?.isAdmin && !adminDestination) return;
     if (adminDestination && !currentUser?.isAdmin) return;
     const views = {
       feed: ["#feed-view", "Home feed", "COMMUNITY"],

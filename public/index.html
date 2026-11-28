@@ -9,8 +9,8 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/styles.css?v=4">
-    <script src="/app.js?v=6" defer></script>
+    <link rel="stylesheet" href="/styles.css?v=5">
+    <script src="/app.js?v=7" defer></script>
   </head>
   <body>
     <div class="auth-screen" id="auth-screen">
@@ -63,12 +63,12 @@
     <div class="app-shell" id="app-shell" hidden>
       <aside class="sidebar">
         <a class="brand" href="#" data-nav="dashboard" aria-label="SocialX overview"><span class="brand-mark">s</span>social<span class="brand-x">x</span></a>
-        <p class="side-label">COMMUNITY</p>
-        <nav class="main-nav" aria-label="Community navigation">
+        <p class="side-label customer-only">COMMUNITY</p>
+        <nav class="main-nav customer-only" aria-label="Community navigation">
           <button type="button" class="nav-item" data-nav="feed"><span class="nav-icon">⌂</span>Community feed</button>
         </nav>
-        <p class="side-label">YOUR ACCOUNT</p>
-        <nav class="main-nav" aria-label="Account navigation">
+        <p class="side-label customer-only">YOUR ACCOUNT</p>
+        <nav class="main-nav customer-only" aria-label="Account navigation">
           <button type="button" class="nav-item active" data-nav="dashboard"><span class="nav-icon">▦</span>Dashboard</button>
           <button type="button" class="nav-item" data-nav="wallet"><span class="nav-icon">◉</span>Moneybox</button>
           <button type="button" class="nav-item" data-nav="orders"><span class="nav-icon">▤</span>My orders</button>
@@ -76,7 +76,7 @@
           <button type="button" class="nav-item" data-nav="support"><span class="nav-icon">◎</span>Help &amp; tickets</button>
         </nav>
         <div id="admin-nav-group" hidden>
-          <p class="side-label">ADMINISTRATION</p>
+          <p class="side-label">OPERATIONS</p>
           <nav class="main-nav" aria-label="Administration navigation">
             <button type="button" class="nav-item admin-nav-item" data-nav="admin" id="admin-nav"><span class="nav-icon">▦</span>Overview</button>
             <button type="button" class="nav-item admin-nav-item" data-nav="admin-orders"><span class="nav-icon">▤</span>Engagement orders</button>
