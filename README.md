@@ -18,7 +18,7 @@ If the connection URI omits a database name, the app uses `socialx`; override th
 
 ## Deploy to Vercel
 
-Select the Express preset and use the repository root. Leave the Build Command and Output Directory unset; Vercel uses the root `index.js` entry point. Set `MONGODB_URI` and a unique `JWT_SECRET` of at least 32 characters in the Vercel project environment variables. Set any optional payment or provider variables only when enabling those features. Allow the Vercel deployment to connect to MongoDB Atlas, and create administrator accounts against the production database with `npm run create-admin`.
+Use the repository root and leave the Build Command and Output Directory unset. `vercel.json` explicitly builds the root `index.js` as a Node function and routes requests to it. Set `MONGODB_URI` and a unique `JWT_SECRET` of at least 32 characters in the Vercel project environment variables. Set any optional payment or provider variables only when enabling those features. Allow the Vercel deployment to connect to MongoDB Atlas, and create administrator accounts against the production database with `npm run create-admin`.
 
 ## Sign-in pages
 
